@@ -1,0 +1,164 @@
+2024-05-14 14:47:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS Dorm (Name TEXT NOT NULL,Gender TEXT NOT [*]NULLCapacity INTEGER NOT NULL,)"; expected "NULL"; SQL statement:
+CREATE TABLE IF NOT EXISTS Dorm (Name TEXT NOT NULL,Gender TEXT NOT NULLCapacity INTEGER NOT NULL,) [42001-212]
+2024-05-14 14:50:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS Dorm (Name TEXT NOT NULL,Gender TEXT NOT [*]NULLCapacity INTEGER NOT NULL,)"; expected "NULL"; SQL statement:
+CREATE TABLE IF NOT EXISTS Dorm (Name TEXT NOT NULL,Gender TEXT NOT NULLCapacity INTEGER NOT NULL,) [42001-212]
+2024-05-14 14:50:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS Dorm (Name TEXT NOT NULL,Gender TEXT NOT [*]NULLCapacity INTEGER NOT NULL,)"; expected "NULL"; SQL statement:
+CREATE TABLE IF NOT EXISTS Dorm (Name TEXT NOT NULL,Gender TEXT NOT NULLCapacity INTEGER NOT NULL,) [42001-212]
+2024-05-14 15:07:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "DORMNAME" not found; SQL statement:
+UPDATE Student SET DormName = ? WHERE Id = ? [42122-212]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.table.Table.getColumn(Table.java:754)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1092)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1159)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1128)
+	at org.h2.command.Parser.parsePrepared(Parser.java:858)
+	at org.h2.command.Parser.parse(Parser.java:691)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:568)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:288)
+	at pbo.f01.driver.ContactDatabase.assign(ContactDatabase.java:86)
+	at pbo.f01.App.main(App.java:41)
+2024-05-14 15:07:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "DORMNAME" not found; SQL statement:
+UPDATE Student SET DormName = ? WHERE Id = ? [42122-212]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.table.Table.getColumn(Table.java:754)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1092)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1159)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1128)
+	at org.h2.command.Parser.parsePrepared(Parser.java:858)
+	at org.h2.command.Parser.parse(Parser.java:691)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:568)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:288)
+	at pbo.f01.driver.ContactDatabase.assign(ContactDatabase.java:86)
+	at pbo.f01.App.main(App.java:41)
+2024-05-14 15:08:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "DORMNAME" not found; SQL statement:
+UPDATE Student SET DormName = ? WHERE Id = ? [42122-212]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.table.Table.getColumn(Table.java:754)
+	at org.h2.command.Parser.readTableColumn(Parser.java:1092)
+	at org.h2.command.Parser.readUpdateSetClause(Parser.java:1159)
+	at org.h2.command.Parser.parseUpdate(Parser.java:1128)
+	at org.h2.command.Parser.parsePrepared(Parser.java:858)
+	at org.h2.command.Parser.parse(Parser.java:691)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:568)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:92)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:288)
+	at pbo.f01.driver.ContactDatabase.assign(ContactDatabase.java:86)
+	at pbo.f01.App.main(App.java:41)
+2024-05-14 15:21:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DORM" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS Student (Id VARCHAR(30) PRIMARY KEY,Name TEXT NOT NULL,Gender TEXT NOT NULL,EntranceYear INTEGER NOT NULL,FOREIGN KEY (DormName) REFERENCES Dorm(Name)) [42102-212]
+2024-05-14 15:25:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DORM" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS Student (Id VARCHAR(30) PRIMARY KEY,Name TEXT NOT NULL,Gender TEXT NOT NULL,EntranceYear INTEGER NOT NULL,DormName TEXT,FOREIGN KEY (DormName) REFERENCES Dorm(Name)) [42102-212]
+2024-05-14 15:26:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DORM" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS Student (Id VARCHAR(30) PRIMARY KEY,Name TEXT NOT NULL,Gender TEXT NOT NULL,EntranceYear INTEGER NOT NULL,DormName TEXT,FOREIGN KEY (DormName) REFERENCES Dorm(Name)) [42102-212]
+2024-05-14 15:28:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLFeatureNotSupportedException: Feature not supported: "Index on column: ""NAME"" CHARACTER LARGE OBJECT NOT NULL"; SQL statement:
+CREATE TABLE IF NOT EXISTS Dorm (Name TEXT NOT NULL PRIMARY KEY,Gender TEXT NOT NULL,Capacity INTEGER NOT NULL) [50100-212]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:556)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.getUnsupportedException(DbException.java:287)
+	at org.h2.index.Index.checkIndexColumnTypes(Index.java:46)
+	at org.h2.mvstore.db.MVSecondaryIndex.<init>(MVSecondaryIndex.java:54)
+	at org.h2.mvstore.db.MVTable.addIndex(MVTable.java:363)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:147)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:72)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.ddl.CommandWithColumns.createConstraints(CommandWithColumns.java:83)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:131)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:174)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at pbo.f01.driver.ContactDatabase.createTables(ContactDatabase.java:51)
+	at pbo.f01.driver.AbstractDatabase.<init>(AbstractDatabase.java:32)
+	at pbo.f01.driver.ContactDatabase.<init>(ContactDatabase.java:20)
+	at pbo.f01.App.main(App.java:20)
+2024-05-14 15:31:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DORM" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS Student (Id VARCHAR(30) PRIMARY KEY,Name TEXT NOT NULL,Gender TEXT NOT NULL,EntranceYear INTEGER NOT NULL,DormName TEXT,FOREIGN KEY (DormName) REFERENCES Dorm(Name)) [42102-212]
+2024-05-14 15:33:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLFeatureNotSupportedException: Feature not supported: "Index on column: ""NAME"" CHARACTER LARGE OBJECT NOT NULL"; SQL statement:
+CREATE TABLE IF NOT EXISTS Dorm (Name TEXT NOT NULL PRIMARY KEY,Gender TEXT NOT NULL,Capacity INTEGER NOT NULL) [50100-212]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:556)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.getUnsupportedException(DbException.java:287)
+	at org.h2.index.Index.checkIndexColumnTypes(Index.java:46)
+	at org.h2.mvstore.db.MVSecondaryIndex.<init>(MVSecondaryIndex.java:54)
+	at org.h2.mvstore.db.MVTable.addIndex(MVTable.java:363)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:147)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:72)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.ddl.CommandWithColumns.createConstraints(CommandWithColumns.java:83)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:131)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:174)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at pbo.f01.driver.ContactDatabase.createTables(ContactDatabase.java:51)
+	at pbo.f01.driver.AbstractDatabase.<init>(AbstractDatabase.java:32)
+	at pbo.f01.driver.ContactDatabase.<init>(ContactDatabase.java:20)
+	at pbo.f01.App.main(App.java:20)
+2024-05-14 15:34:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column """DORMNAME"" CHARACTER LARGE OBJECT" references uncomparable column """NAME"" CHARACTER VARYING(255) NOT NULL"; SQL statement:
+CREATE TABLE IF NOT EXISTS Student (Id VARCHAR(30) PRIMARY KEY,Name TEXT NOT NULL,Gender TEXT NOT NULL,EntranceYear INTEGER NOT NULL,DormName TEXT,FOREIGN KEY (DormName) REFERENCES Dorm(Name)) [90153-212]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:632)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:251)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:72)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.ddl.CommandWithColumns.createConstraints(CommandWithColumns.java:83)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:131)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:174)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at pbo.f01.driver.ContactDatabase.createTables(ContactDatabase.java:52)
+	at pbo.f01.driver.AbstractDatabase.<init>(AbstractDatabase.java:32)
+	at pbo.f01.driver.ContactDatabase.<init>(ContactDatabase.java:20)
+	at pbo.f01.App.main(App.java:20)
+2024-05-14 16:08:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "CurrentNumber" not found [42122-212]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3492)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:337)
+	at pbo.f01.driver.ContactDatabase.displayAll(ContactDatabase.java:104)
+	at pbo.f01.App.main(App.java:45)

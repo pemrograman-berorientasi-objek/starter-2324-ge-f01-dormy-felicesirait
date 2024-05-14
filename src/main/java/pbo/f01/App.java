@@ -1,13 +1,58 @@
 package pbo.f01;
 
 /**
- * NIM - Nama
- * NIM - Nama
+ * 12S22006 - Felice Anggie Sirait
+ * 12S22018 - Jesica A M Siburian
  */
+
+import java.sql.SQLException;
+import java.util.Scanner;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import pbo.f01.driver.*;
+
 public class App {
 
-    public static void main(String[] _args) {
-        // codes
-    }
+    public static void main(String[] args) {
+        
+        try {
+            ContactDatabase database = new ContactDatabase("jdbc:h2:./db/dormy");
 
+            Scanner input = new Scanner(System.in);
+            String str;
+
+            while(input.hasNextLine()){
+                str = input.nextLine();
+                if(str.equals("---")){
+                    break;                    
+                }
+                String[] token = str.split("#");
+                if (token[0].equals("student-add")){
+                    //student-add#<id>#<name>#<year>#<gender>
+                    database.addStudent(token[1], token[2], Integer.parseInt(token[3]), token[4] );
+                }
+                else if (token[0].equals("dorm-add")){
+                    //dorm-add#<name>#<capacity>#<gender>
+                    database.addDorm(token[1], Integer.parseInt(token[2]), token[3] );
+                }
+                else if (token[0].equals("assign")){
+                    //assign#<student-id>#<dorm-name>
+                    database.assign(token[1], token[2]);
+                }
+                else if (token[0].equals("display-all")){
+                    //display-all
+                    database.displayAll();
+                }
+
+                    
+            }
+            database.shutdown();
+
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+        }
+
+
+    }
 }
