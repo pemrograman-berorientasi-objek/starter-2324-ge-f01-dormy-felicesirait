@@ -1,0 +1,202 @@
+name: Autograding Tests
+'on':
+- workflow_dispatch
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: f01&#38;&#35;45&#59;01&#38;&#35;45&#59;01
+      id: f01-38-35-45-59-01-38-35-45-59-01
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: f01&#38;&#35;45&#59;01&#38;&#35;45&#59;01
+        setup-command: make compile
+        command: make -s test_01
+        input: |
+          dorm-add#Pniel#5#female
+          dorm-add#Kapernaum#5#male
+          student-add#12S21010#Bobby Siagian#2021#male
+          student-add#12S21001#Dhino Turnip#2021#male
+          student-add#12S21006#Weny Sitinjak#2021#female
+          assign#12S21010#Kapernaum
+          assign#12S21001#Kapernaum
+          assign#12S21006#Pniel
+          display-all
+          ---
+        expected-output: |
+          Kapernaum|male|5|2
+          12S21010|Bobby Siagian|2021
+          12S21001|Dhino Turnip|2021
+          Pniel|female|5|1
+          12S21006|Weny Sitinjak|2021
+        comparison-method: exact
+        timeout: 1
+        max-score: 20
+    - name: f01&#45;01&#45;02
+      id: f01-45-01-45-02
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: f01&#45;01&#45;02
+        setup-command: make compile
+        command: make -s test_01
+        input: |
+          dorm-add#Kapernaum#5#male
+          dorm-add#Pniel#5#female
+          student-add#12S21001#Dhino Turnip#2021#male
+          student-add#12S21010#Bobby Siagian#2021#male
+          student-add#12S21006#Weny Sitinjak#2021#female
+          assign#12S21001#Kapernaum
+          assign#12S21010#Kapernaum
+          assign#12S21006#Pniel
+          display-all
+          ---
+        expected-output: |
+          Kapernaum|male|5|2
+          12S21010|Bobby Siagian|2021
+          12S21001|Dhino Turnip|2021
+          Pniel|female|5|1
+          12S21006|Weny Sitinjak|2021
+        comparison-method: exact
+        timeout: 1
+        max-score: 20
+    - name: f01&#38;&#35;45&#59;01&#38;&#35;45&#59;03
+      id: f01-38-35-45-59-01-38-35-45-59-03
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: f01&#38;&#35;45&#59;01&#38;&#35;45&#59;03
+        setup-command: make compile
+        command: make -s test_01
+        input: |
+          dorm-add#Pniel#5#female
+          dorm-add#Kapernaum#5#male
+          student-add#12S21001#Dhino Turnip#2021#male
+          student-add#12S21006#Weny Sitinjak#2021#female
+          student-add#12S21010#Bobby Siagian#2021#male
+          assign#12S21010#Kapernaum
+          assign#12S21001#Kapernaum
+          assign#12S21006#Kapernaum
+          display-all
+          ---
+        expected-output: |
+          Kapernaum|male|5|2
+          12S21010|Bobby Siagian|2021
+          12S21001|Dhino Turnip|2021
+          Pniel|female|5|0
+        comparison-method: exact
+        timeout: 1
+        max-score: 20
+    - name: f01&#45;01&#45;04
+      id: f01-45-01-45-04
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: f01&#45;01&#45;04
+        setup-command: make compile
+        command: make -s test_01
+        input: |
+          dorm-add#Pniel#5#female
+          dorm-add#Kapernaum#5#male
+          student-add#12S21001#Dhino Turnip#2021#male
+          student-add#12S21001#Dhino Turnip#2021#male
+          student-add#12S21002#Marudut Tampubolon#2021#male
+          student-add#12S21003#Jusas Tampubolon#2021#male
+          student-add#12S21004#Estomihi pangaribuan#2021#male
+          student-add#12S21006#Weny Sitinjak#2021#female
+          student-add#12S21007#Dame Sitinjak#2021#female
+          student-add#12S21008#Tuani Manurung#2021#male
+          student-add#12S21009#Mikhael Pakpahan#2021#male
+          student-add#12S21010#Bobby Siagian#2021#male
+          student-add#12S21011#Aldi Simamora#2021#male
+          assign#12S21001#Kapernaum
+          assign#12S21002#Kapernaum
+          assign#12S21003#Kapernaum
+          assign#12S21004#Kapernaum
+          assign#12S21005#Kapernaum
+          assign#12S21006#Kapernaum
+          assign#12S21007#Kapernaum
+          assign#12S21008#Kapernaum
+          assign#12S21009#Kapernaum
+          assign#12S21010#Kapernaum
+          assign#12S21011#Kapernaum
+          display-all
+          ---
+        expected-output: |
+          Kapernaum|male|5|5
+          12S21001|Dhino Turnip|2021
+          12S21004|Estomihi pangaribuan|2021
+          12S21003|Jusas Tampubolon|2021
+          12S21002|Marudut Tampubolon|2021
+          12S21008|Tuani Manurung|2021
+          Pniel|female|5|0
+        comparison-method: exact
+        timeout: 1
+        max-score: 20
+    - name: f01&#45;01&#45;05
+      id: f01-45-01-45-05
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: f01&#45;01&#45;05
+        setup-command: make compile
+        command: make -s test_01
+        input: |
+          dorm-add#Pniel#5#female
+          dorm-add#Kapernaum#5#male
+          student-add#12S21001#Dhino Turnip#2021#male
+          student-add#12S21001#Dhino Turnip#2021#male
+          student-add#12S21002#Marudut Tampubolon#2021#male
+          student-add#12S21003#Jusas Tampubolon#2021#male
+          student-add#12S21004#Estomihi pangaribuan#2021#male
+          student-add#12S21006#Weny Sitinjak#2021#female
+          student-add#12S21007#Dame Sitinjak#2021#female
+          student-add#12S21008#Tuani Manurung#2021#male
+          student-add#12S21009#Mikhael Pakpahan#2021#male
+          student-add#12S21010#Bobby Siagian#2021#male
+          student-add#12S21011#Aldi Simamora#2021#male
+          dorm-add#Mamre#5#male
+          assign#12S21001#Kapernaum
+          assign#12S21002#Kapernaum
+          assign#12S21003#Kapernaum
+          assign#12S21004#Kapernaum
+          assign#12S21005#Kapernaum
+          assign#12S21006#Pniel
+          assign#12S21007#Pniel
+          assign#12S21008#Mamre
+          assign#12S21009#Mamre
+          assign#12S21010#Mamre
+          assign#12S21011#Mamre
+          display-all
+          ---
+        expected-output: |
+          Kapernaum|male|5|4
+          12S21001|Dhino Turnip|2021
+          12S21004|Estomihi pangaribuan|2021
+          12S21003|Jusas Tampubolon|2021
+          12S21002|Marudut Tampubolon|2021
+          Mamre|male|5|4
+          12S21011|Aldi Simamora|2021
+          12S21010|Bobby Siagian|2021
+          12S21009|Mikhael Pakpahan|2021
+          12S21008|Tuani Manurung|2021
+          Pniel|female|5|2
+          12S21007|Dame Sitinjak|2021
+          12S21006|Weny Sitinjak|2021
+        comparison-method: exact
+        timeout: 1
+        max-score: 20
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        F01-38-35-45-59-01-38-35-45-59-01_RESULTS: "${{steps.f01-38-35-45-59-01-38-35-45-59-01.outputs.result}}"
+        F01-45-01-45-02_RESULTS: "${{steps.f01-45-01-45-02.outputs.result}}"
+        F01-38-35-45-59-01-38-35-45-59-03_RESULTS: "${{steps.f01-38-35-45-59-01-38-35-45-59-03.outputs.result}}"
+        F01-45-01-45-04_RESULTS: "${{steps.f01-45-01-45-04.outputs.result}}"
+        F01-45-01-45-05_RESULTS: "${{steps.f01-45-01-45-05.outputs.result}}"
+      with:
+        runners: f01-38-35-45-59-01-38-35-45-59-01,f01-45-01-45-02,f01-38-35-45-59-01-38-35-45-59-03,f01-45-01-45-04,f01-45-01-45-05
