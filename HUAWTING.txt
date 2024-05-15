@@ -1,0 +1,35 @@
+        String sql = "SELECT * FROM Dorm ORDER BY Name ASC";
+        Statement statement = this.getConnection().createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+    
+        while (resultSet.next()) {
+            String dormName = resultSet.getString("Name");
+            String gender = resultSet.getString("Gender");
+            int capacity = resultSet.getInt("Capacity");
+    
+            String studentSql = "SELECT * FROM Student WHERE DormName = ? ORDER BY Name ASC";
+            PreparedStatement studentStatement = this.getConnection().prepareStatement(studentSql);
+            studentStatement.setString(1, dormName);
+            ResultSet studentResultSet = studentStatement.executeQuery();
+    
+            List<String> students = new ArrayList<>();
+            while (studentResultSet.next()) {
+                String studentId = studentResultSet.getString("Id");
+                String studentName = studentResultSet.getString("Name");
+                int entranceYear = studentResultSet.getInt("EntranceYear");
+    
+                students.add(studentId + "|" + studentName + "|" + entranceYear);
+            }
+    
+            System.out.println(dormName + "|" + gender + "|" + capacity + "|" + students.size());
+            for (String student : students) {
+                System.out.println(student);
+            }
+    
+            studentResultSet.close();
+            studentStatement.close();
+        }
+    
+        resultSet.close();
+        statement.close();
+    }
