@@ -111,7 +111,6 @@ public class ContactDatabase extends AbstractDatabase {
         }
     }
     capacityStatement.close();
-
     }
 
     //METHOD DISPLAY ALL
