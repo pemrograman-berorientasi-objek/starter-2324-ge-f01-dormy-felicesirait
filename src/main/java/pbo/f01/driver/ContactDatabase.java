@@ -37,6 +37,7 @@ public class ContactDatabase extends AbstractDatabase {
             "dormName TEXT " +
             ")";
     
+            
         Statement statement = this.getConnection().createStatement(); //statement untuk membuat table
         //statement untuk mendrop table
         for (String sql : dropSQLs) {
