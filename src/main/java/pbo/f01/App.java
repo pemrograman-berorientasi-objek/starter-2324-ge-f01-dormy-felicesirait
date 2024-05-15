@@ -29,19 +29,15 @@ public class App {
                 }
                 String[] token = str.split("#");
                 if (token[0].equals("student-add")){
-                    //student-add#<id>#<name>#<year>#<gender>
                     database.addStudent(token[1], token[2], Integer.parseInt(token[3]), token[4] );
                 }
                 else if (token[0].equals("dorm-add")){
-                    //dorm-add#<name>#<capacity>#<gender>
                     database.addDorm(token[1], Integer.parseInt(token[2]), token[3] );
                 }
                 else if (token[0].equals("assign")){
-                    //assign#<student-id>#<dorm-name>
                     database.assign(token[1], token[2]);
                 }
                 else if (token[0].equals("display-all")){
-                    //display-all
                     database.displayAll();
                 }
 
