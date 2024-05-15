@@ -24,17 +24,17 @@ public class ContactDatabase extends AbstractDatabase {
         };
 
         String Dorm = "CREATE TABLE IF NOT EXISTS Dorm (" +
-            "Name VARCHAR(255) NOT NULL PRIMARY KEY," +
+            "Name VARCHAR(30) NOT NULL PRIMARY KEY," +
             "Gender TEXT NOT NULL," +
             "Capacity INTEGER NOT NULL" +
             ")";
 
         String Student = "CREATE TABLE IF NOT EXISTS Student (" +
             "Id VARCHAR(30) PRIMARY KEY," + 
-            "Name VARCHAR(255) NOT NULL," +
+            "Name VARCHAR(30) NOT NULL," +
             "Gender TEXT NOT NULL," +
             "EntranceYear INTEGER NOT NULL," +
-            "DormName VARCHAR(255)" + 
+            "DormName VARCHAR(30)" + 
             ")";
 
         Statement statement = this.getConnection().createStatement();
@@ -49,8 +49,6 @@ public class ContactDatabase extends AbstractDatabase {
     }
 
     public void addStudent(String Id, String Name, int EntranceYear, String Gender) throws SQLException {
-        // Periksa apakah ID sudah ada 
-        //untuk nim 12S21001 yang 2 kali diinputkan dalam autograding
         String checkSql = "SELECT COUNT(*) FROM Student WHERE Id = ?";
         PreparedStatement checkStatement = this.getConnection().prepareStatement(checkSql);
         checkStatement.setString(1, Id);
@@ -58,7 +56,7 @@ public class ContactDatabase extends AbstractDatabase {
         resultSet.next();
         if (resultSet.getInt(1) > 0) {
             checkStatement.close();
-            return; // Jika ID sudah ada, tidak menambahkan mahasiswa baru
+            return; 
         }
         checkStatement.close();
 
@@ -83,19 +81,19 @@ public class ContactDatabase extends AbstractDatabase {
     }
 
     public void assign(String Id, String DormName) throws SQLException {
-        // Check student's gender
+        //UNTUK CEK GENDER STUDENT
         String studentGenderSql = "SELECT Gender FROM Student WHERE Id = ?";
         PreparedStatement studentGenderStatement = this.getConnection().prepareStatement(studentGenderSql);
         studentGenderStatement.setString(1, Id);
         ResultSet studentGenderResultSet = studentGenderStatement.executeQuery();
         if (!studentGenderResultSet.next()) {
             studentGenderStatement.close();
-            return; // If the student does not exist, do not assign
+            return; 
         }
         String studentGender = studentGenderResultSet.getString("Gender");
         studentGenderStatement.close();
 
-        // Check dorm's gender and capacity
+        //UNTUK CEK GENDER DORM SERTA CAPACITY
         String dormSql = "SELECT Gender, Capacity, (SELECT COUNT(*) FROM Student WHERE DormName = ?) AS Occupied FROM Dorm WHERE Name = ?";
         PreparedStatement dormStatement = this.getConnection().prepareStatement(dormSql);
         dormStatement.setString(1, DormName);
@@ -103,19 +101,19 @@ public class ContactDatabase extends AbstractDatabase {
         ResultSet dormResultSet = dormStatement.executeQuery();
         if (!dormResultSet.next()) {
             dormStatement.close();
-            return; // If the dorm does not exist, do not assign
+            return;
         }
         String dormGender = dormResultSet.getString("Gender");
         int capacity = dormResultSet.getInt("Capacity");
         int occupied = dormResultSet.getInt("Occupied");
         dormStatement.close();
 
-        // Check if the genders match and the dorm has capacity
+        //UNTUK CEK GENDER APAKAH SESUAI DENGAN DORM YANG MEMILIKI KAPASITAS
         if (!studentGender.equals(dormGender) || occupied >= capacity) {
-            return; // If the genders do not match or the dorm is full, do not assign
+            return; //kalau ga sesuai dan full dormnya, ga boleh di assign lagi
         }
 
-        // Assign the student to the dorm
+        //UNTUK MEMASUKKAN STUDENT KE DORMNYA
         String sql = "UPDATE Student SET DormName = ? WHERE Id = ?";
         PreparedStatement statement = this.getConnection().prepareStatement(sql);
         statement.setString(1, DormName);

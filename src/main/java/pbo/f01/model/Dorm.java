@@ -10,5 +10,4 @@ public class Dorm {
         this.Gender = Gender;
         this.Capacity = Capacity;
     }
-
 }

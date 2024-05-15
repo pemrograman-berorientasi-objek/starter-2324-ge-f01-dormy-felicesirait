@@ -30,7 +30,6 @@ public abstract class AbstractDatabase {
     
     protected abstract void prepareTables() throws SQLException;{
         this.createTables();
-        //this.seedTables();
     }
 
     protected abstract void createTables() throws SQLException;{

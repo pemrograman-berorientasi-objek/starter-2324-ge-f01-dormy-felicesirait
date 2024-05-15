@@ -12,8 +12,7 @@ import java.sql.Statement;
 
 import pbo.f01.driver.*;
 
-public class App {
-
+public class Driver {
     public static void main(String[] args) {
         
         try {
@@ -27,6 +26,7 @@ public class App {
                 if(str.equals("---")){
                     break;                    
                 }
+
                 String[] token = str.split("#");
                 if (token[0].equals("student-add")){
                     database.addStudent(token[1], token[2], Integer.parseInt(token[3]), token[4] );
@@ -39,16 +39,13 @@ public class App {
                 }
                 else if (token[0].equals("display-all")){
                     database.displayAll();
-                }
-
-                    
+                }      
             }
             database.shutdown();
 
         } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
         }
-
-
+        
     }
 }
