@@ -34,7 +34,7 @@ public class ContactDatabase extends AbstractDatabase {
             "Name VARCHAR(255) NOT NULL," +
             "Gender TEXT NOT NULL," +
             "EntranceYear INTEGER NOT NULL," +
-            "DormName VARCHAR(255)" + // Tambahkan kolom DormName
+            "DormName VARCHAR(255)" + 
             ")";
 
         Statement statement = this.getConnection().createStatement();
@@ -83,22 +83,39 @@ public class ContactDatabase extends AbstractDatabase {
     }
 
     public void assign(String Id, String DormName) throws SQLException {
-        // Periksa kapasitas asrama
-        String capacitySql = "SELECT Capacity, (SELECT COUNT(*) FROM Student WHERE DormName = ?) AS Occupied FROM Dorm WHERE Name = ?";
-        PreparedStatement capacityStatement = this.getConnection().prepareStatement(capacitySql);
-        capacityStatement.setString(1, DormName);
-        capacityStatement.setString(2, DormName);
-        ResultSet capacityResultSet = capacityStatement.executeQuery();
-        if (capacityResultSet.next()) {
-            int capacity = capacityResultSet.getInt("Capacity");
-            int occupied = capacityResultSet.getInt("Occupied");
-            if (occupied >= capacity) {
-                capacityStatement.close();
-                return; // Jika kapasitas penuh, tidak menempatkan mahasiswa
-            }
+        // Check student's gender
+        String studentGenderSql = "SELECT Gender FROM Student WHERE Id = ?";
+        PreparedStatement studentGenderStatement = this.getConnection().prepareStatement(studentGenderSql);
+        studentGenderStatement.setString(1, Id);
+        ResultSet studentGenderResultSet = studentGenderStatement.executeQuery();
+        if (!studentGenderResultSet.next()) {
+            studentGenderStatement.close();
+            return; // If the student does not exist, do not assign
         }
-        capacityStatement.close();
+        String studentGender = studentGenderResultSet.getString("Gender");
+        studentGenderStatement.close();
 
+        // Check dorm's gender and capacity
+        String dormSql = "SELECT Gender, Capacity, (SELECT COUNT(*) FROM Student WHERE DormName = ?) AS Occupied FROM Dorm WHERE Name = ?";
+        PreparedStatement dormStatement = this.getConnection().prepareStatement(dormSql);
+        dormStatement.setString(1, DormName);
+        dormStatement.setString(2, DormName);
+        ResultSet dormResultSet = dormStatement.executeQuery();
+        if (!dormResultSet.next()) {
+            dormStatement.close();
+            return; // If the dorm does not exist, do not assign
+        }
+        String dormGender = dormResultSet.getString("Gender");
+        int capacity = dormResultSet.getInt("Capacity");
+        int occupied = dormResultSet.getInt("Occupied");
+        dormStatement.close();
+
+        // Check if the genders match and the dorm has capacity
+        if (!studentGender.equals(dormGender) || occupied >= capacity) {
+            return; // If the genders do not match or the dorm is full, do not assign
+        }
+
+        // Assign the student to the dorm
         String sql = "UPDATE Student SET DormName = ? WHERE Id = ?";
         PreparedStatement statement = this.getConnection().prepareStatement(sql);
         statement.setString(1, DormName);
